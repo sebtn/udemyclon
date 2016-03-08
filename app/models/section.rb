@@ -1,3 +1,4 @@
 class Section < ActiveRecord::Base
 	belongs_to :course
-end
+	has_many :lessons
+end	

@@ -1,26 +1,15 @@
 class LessonsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :require_authorized_for_current_lesson, only: [:show]	
+	before_action :require_enrolled_for_current_lesson, only: [:show]	
 
-	def new
-		@Lesson = Lesson.new
-	end	
-
-	def create
-		@lesson = current_user.lessons.create(lesson_params)
-			if current_user enrolled_in?
-			else
-				redirect_to course_path(@course)
-			end	
-	end	
-
-  def show
+	def show
   end
 
   private
-  def require_authorized_for_current_lesson
-    if current_lesson_user != current_user
-     rederict_to course_path, alert: 'Error Message Here'
+  def require_enrolled_for_current_lesson
+    this_course = current_lesson.section.course
+    if ! current_user.enrolled_in?(this_course) 
+     rederict_to course_path(this_course), alert: 'Error Message Here'
     end
   end  
   helper_method :current_lesson

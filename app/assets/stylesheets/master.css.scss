@@ -1,4 +1,4 @@
-body {
+body, html {
   background: url();
   padding:0;
   margin:0;
@@ -105,5 +105,6 @@ h1, h2, h3, h4, h5, h6, .navbar {
 .img-2x { 
   width: 300px;
   height: 300px;
-  border: 2px solid white;
+  border: 3px solid white;
 }
+

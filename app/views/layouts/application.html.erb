@@ -32,7 +32,6 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
         	<% if user_signed_in? %>
-          <li><%= link_to 'My dashboard', dashboard_path %></li>
           <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to 'Sign in', new_user_session_path %></li>
@@ -59,7 +58,8 @@
       <b>Teachers</b>
       <br />
       <%= link_to 'Add a course as Teacher', new_instructor_course_path %>
-
+      <br />
+      <%= link_to 'My dashboard', dashboard_path %>
     </div>
   </div>
 

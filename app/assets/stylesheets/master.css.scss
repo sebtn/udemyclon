@@ -64,6 +64,7 @@ h1, h2, h3, h4, h5, h6, .navbar {
 
 .booyah-box h2, .booyah-box h1 {
   margin:10px;
+  font-family:"Courier New", Courier, monospace;  
 }
 
 .clr {
@@ -152,5 +153,9 @@ ul {
   text-decoration:none;
   text-transform: capitalize;
   font-size:1.25em;
-
 }
+
+.gi-2x{font-size: 2em;}
+.gi-3x{font-size: 3em;}
+.gi-4x{font-size: 4em;}
+.gi-5x{font-size: 5em;}

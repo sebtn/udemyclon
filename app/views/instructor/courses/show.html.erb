@@ -11,6 +11,19 @@
       }  
     });
   });
+
+    $(function() {
+    $('.sections').sortable({
+      update: function( event, ui ) {
+        $.ajax({
+          type: 'PUT',
+          url: ui.item.data('update-url'),
+          dataType: 'json',
+          data: { section: { row_order_position: ui.item.index() } }
+        });
+      }  
+    });
+  });
 </script>
 
 <br />
@@ -24,15 +37,15 @@
     <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-primary btn-lg' %>
   </div>
     <ul>
-    <% current_course.sections.each do |section| %>
-      <li>
+    <% current_course.sections.rank(:row_order).each do |section| %>
+      <li data-update-url="<%= instructor_section_path(section) %>">
         <%= section.title %>
         <%= link_to 'New Lesson', new_instructor_section_lesson_path(section), class: 'pull-right btn btn-primary btn-xs' %>
         <ul class="lessons">
           <% section.lessons.rank(:row_order).each do |lesson| %>
             <li data-update-url="<%= instructor_lesson_path(lesson) %>">
               <div class="col-xs-1">
-                <br />
+              <br />
                 <span class="glyphicon glyphicon-list"></span>
               </div> 
               <div class="col-xs-11 text-center"> 
@@ -63,7 +76,6 @@
       <%= link_to 'Administer', instructor_course_path(current_course), class: 'btn btn-danger btn-large' %>
     <% end %>
   </div>
-
 
   <div class="col-sm-8 col-xs-12">
     <%= current_course.description %>

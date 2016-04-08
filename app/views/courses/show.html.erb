@@ -7,7 +7,6 @@
     <span class="label label-default">
       <%= number_to_currency @course.cost %>
     </span>
-
     <% if current_user && current_user == @course.user %>
       <br />
       <br />
@@ -20,11 +19,13 @@
     <% else %>
       <%= link_to 'Enroll', course_enrollments_path(@course), class: 'btn btn-primary', method: :post %>
     <% end %>
+    <br />
+    <br />
   </div>
-
   <div class="col-sm-8 col-xs-12">
     <%= @course.description %>
   </div>
+  <br />
   <div class="col-xs-12">
     <% @course.sections.each do |section| %>
       <div class="section">
